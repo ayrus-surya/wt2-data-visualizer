@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>
+      var obj ={
+        submitted : function(){
+          ifr = document.getElementById("helper");
+          ifr.src="index.php";
+        },
+        response: function(txt){
+          document.getElementById("slider_output").style.display="inline";
+        }
+       }
+	   
+	   function replacebutton(){
+			document.getElementById("div1").style.display="none"; 
+			document.getElementById("div2").style.display="block"; 
+			document.getElementById("div3").style.display="none";
+		}
+		
+	function barchart(){
+		document.getElementById("popup1").style.display="block";
+		$(document).ready(function(){
+			$('#popup1').load("barchart.html");
+		});
+		}
+	function histogram(){
+		document.getElementById("popup1").style.display="block";
+		$(document).ready(function(){
+			$('#popup1').load("histogram.html");
+		});
+		}
+	function logistic(){
+		document.getElementById("popup1").style.display="block";
+		$(document).ready(function(){
+			$('#popup1').load("logistic.html");
+		});
+		}
+	 </script>
+	 
+	 </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+	        <ul class="list-unstyled components mb-5">
+	          <li class="active">
+	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+	            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#">Home 1</a>
+                </li>
+                <li>
+                    <a href="#">Home 2</a>
+                </li>
+                <li>
+                    <a href="#">Home 3</a>
+                </li>
+	            </ul>
+	          </li>
+	          <li>
+	              <a href="#">About</a>
+	          </li>
+	          <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">Page 1</a>
+                </li>
+                <li>
+                    <a href="#">Page 2</a>
+                </li>
+                <li>
+                    <a href="#">Page 3</a>
+                </li>
+              </ul>
+	          </li>
+	          <li>
+              <a href="#">Portfolio</a>
+	          </li>
+	          <li>
+              <a href="#">Contact</a>
+	          </li>
+	        </ul>
+
+	        <div class="footer">
+	        	
+	        </div>
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <br>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <!-- Content -->
+            </div>
+            <div class="col-md-4">
+			<div id = "div1" style="display:block">
+              <!--<button type="button" class="btn btn-outline-primary">Upload      <img src="images/upload.svg" height="30px"></button>-->
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Upload      <img src="images/upload.svg" height="30px">
+                
+              </button>
+
+              <!-- Modal -->
+              <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Upload Dataset</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Select *.csv file
+                    </div>
+                    <div class="modal-footer">
+                      <form action="index.php" method="POST" target="chldfr">
+                        <input type="file" class="btn btn-outline-primary" id="img" name="img" accept="image/*" >
+                        <input type="submit" onclick="obj.submitted()">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+			  
+			  
+            </div>
+			</div>
+            <div class="col-md-3">
+              <!-- Content -->
+            </div>
+          </div>
+          <iframe name="chldfr" id="helper" hidden></iframe>
+		  
+		  <div id="div3" style="display:block">
+		  <br/>
+		  <br/>
+		  <center><button style="background-color: white;color: black;border: 2px solid #4CAF50;" onclick="replacebutton()">Analyse the data</button></center>
+		  </div>
+		  
+		  <div style="display:none" id="div2">
+
+		<!-------------horizontal tab-------------->
+		  	<div class="tab">
+			<button class="tablinks" onclick="barchart()">BAR GRAPH</button>
+			<button class="tablinks" onclick="histogram()">HISTOGRAM</button>
+			<button class="tablinks" onclick="logistic()">LOGISTIC</button>
+		</div>
+		<div class="columndiv side">
+		<div style="display:none" class="verticaltab" id="popup1">
+		</div>
+		</div>
+		
+		</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </body>
+</html>
