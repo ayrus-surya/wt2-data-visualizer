@@ -1,0 +1,85 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+function getcolumns(data){
+	//alert(data);
+	var col = data.split(',');
+	for(var i = 0; i < col.length ;i++){
+		//alert(col[i]);
+		$('#sel1').append('<option value="' + i + '">' + col[i] + '</option>');
+		$('#sel2').append('<option value="' + i + '">' + col[i] + '</option>');
+	}
+	$('#sel1').change(function () {
+            $('#msg1').text('Selected Column for X-axis: ' + this.options[this.selectedIndex].text);
+     });
+	 
+	 $('#sel2').change(function () {
+            $('#msg2').text('Selected Column for Y-axis: ' + this.options[this.selectedIndex].text);
+     });
+}
+
+$(document).ready(function () {
+        $('#bt').click(function () {
+			$.get("sample1.txt",getcolumns);
+		});
+});
+
+function showresults()
+{
+
+}
+
+</script>
+</head>
+<body>
+<!--------------- vertical tab --------------->
+		
+		<div>
+		 <p>
+        <input type="button" style="button5" value="fill x and y axis" id="bt" />
+		</p>
+		<!--<div class="dropdown">-->
+		<!--<button class="dropbtn" onclick="myFunction()">X-axis 
+		<i class="fa fa-caret-down"></i>
+		</button>-->
+		<div>
+		<select id="sel1" class="custom-select" style="width:200px;">
+        <option value="">X-axis</option>
+		</select>
+		</div>
+		
+		<p id="msg1"></p>
+		
+		<div>
+		<select id="sel2" class="custom-select" style="width:200px;">
+        <option value="">Y-axis</option>
+		</select>
+		</div>
+
+		<p id="msg2"></p>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<button class="button5" onclick="showresult()" style="width:200px;">Submit</button>	
+		</div>
+
+	
+		
+          <div class="card" id="slider_output" style="display:none">
+              
+            </div>
+         
+          
+        
+        
+        
+</body>
+</html>
