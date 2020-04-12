@@ -1,11 +1,13 @@
 
-<html>
+<html ng-app="notesApp">
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/style.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script>
+
+
 function getcolumns(data){
 	//alert(data);
 	var col = data.split(',');
@@ -29,6 +31,10 @@ $(document).ready(function () {
 		});
 });
 
+$('#bt').click( function() {
+    $(this).prop('disabled', true);
+});
+
 function showresults()
 {
 
@@ -36,29 +42,32 @@ function showresults()
 
 </script>
 </head>
-<body>
+<body ng-controller="MainCtrl as ctrl">
 <!--------------- vertical tab --------------->
 		
 		<div>
 		 <p>
-        <input type="button" style="button5" value="fill x and y axis" id="bt" />
+        <input type="button" class="button5" style="width:200px;" value="fill x and y axis" id="bt" />
 		</p>
 		<!--<div class="dropdown">-->
 		<!--<button class="dropbtn" onclick="myFunction()">X-axis 
 		<i class="fa fa-caret-down"></i>
 		</button>-->
+		<form ng-submit="ctrl.submit()"  name="myForm">
 		<div>
-		<select id="sel1" class="custom-select" style="width:200px;">
+		<select id="sel1" class="custom-select" style="width:200px;" name="xval" ng-model="ctrl.colm.xaxis" required>
         <option value="">X-axis</option>
 		</select>
+		<span ng-show="myForm.xval.$error.required">This field is required</span>
 		</div>
 		
 		<p id="msg1"></p>
 		
 		<div>
-		<select id="sel2" class="custom-select" style="width:200px;">
+		<select id="sel2" class="custom-select" style="width:200px;" name="yval"  ng-model="ctrl.colm.yaxis" required>
         <option value="">Y-axis</option>
 		</select>
+		<span ng-show="myForm.yval.$error.required">This field is required</span>
 		</div>
 
 		<p id="msg2"></p>
@@ -66,20 +75,28 @@ function showresults()
 		<br/>
 		<br/>
 		<br/>
-		<br/>
-		<br/>
-		<button class="button5" onclick="showresult()" style="width:200px;">Submit</button>	
+		<button value="submit" class="button5" onclick="showresult()" style="width:200px;" ng-disabled="myForm.$invalid">Submit</button>	
 		</div>
+		</form>
 
 	
 		
           <div class="card" id="slider_output" style="display:none">
               
-            </div>
-         
-          
-        
-        
-        
+           </div>
+		   
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+	</script>
+	<script type="text/javascript">
+		angular.module("notesApp",[]).controller("MainCtrl",[function(){
+			self=this;
+			self.submit=function(){
+			//can display indices using -> self.colm
+				console.log("submittedd");
+			}
+		}])
+
+	</script>
+ 
 </body>
 </html>
